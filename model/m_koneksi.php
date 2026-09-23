@@ -35,7 +35,7 @@ class Koneksi
 }
 
 // membuat objek dari class Koneksi untuk menghubungkan ke database. Objek ini akan digunakan untuk mengakses koneksi ke database di seluruh aplikasi.
-// $koneksi = new Koneksi();
+$koneksi = new Koneksi();
 
 // membuat variabel $conn untuk menyimpan koneksi ke database. Variabel ini akan digunakan untuk mengakses koneksi ke database di seluruh aplikasi.
-// $conn = $koneksi->koneksi;
+$conn = $koneksi->koneksi;
