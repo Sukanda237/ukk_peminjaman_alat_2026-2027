@@ -4,15 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Dashboard - Peminjaman Alat</title>
-
-    <!-- Bootstrap 5 -->
+    <title>Daftar User - Peminjaman Alat</title> <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
     <style>
         :root {
             --sidebar-color: #42a5f5;
@@ -29,9 +24,7 @@
             transition: 0.3s;
         }
 
-        /* =========================
-           SIDEBAR
-        ========================= */
+        /* ========================= SIDEBAR ========================= */
         .sidebar {
             width: 250px;
             height: 100vh;
@@ -82,26 +75,14 @@
             font-size: 18px;
         }
 
-        /* akan dihapus  */
-        /* .logout {
-            position: absolute;
-            bottom: 20px;
-            left: 10px;
-            right: 10px;
-        } */
-
-        /* =========================
-           MAIN CONTENT
-        ========================= */
+        /* ========================= MAIN CONTENT ========================= */
         .main-content {
             margin-left: 250px;
             min-height: 100vh;
             transition: 0.3s;
         }
 
-        /* =========================
-           TOP NAVBAR
-        ========================= */
+        /* ========================= TOPBAR ========================= */
         .topbar {
             background-color: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
@@ -116,24 +97,143 @@
             font-weight: 600;
         }
 
-        /* =========================
-           CONTENT
-        ========================= */
+        /* ========================= CONTENT ========================= */
         .content {
             padding: 25px;
         }
 
-        .welcome {
-            margin-bottom: 25px;
+        /* ========================= CONTENT CARD ========================= */
+        .content-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
         }
 
-        .welcome h3 {
+        .content-card-title {
+            font-size: 18px;
             font-weight: 600;
         }
 
-        .welcome p {
-            color: #6c757d;
+        /* ========================= SEARCH ========================= */
+        .search-box {
+            max-width: 300px;
+        }
+
+        /* ========================= TABLE ========================= */
+        .table {
             margin-bottom: 0;
+        }
+
+        .table th {
+            white-space: nowrap;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        /* ========================= DARK MODE ========================= */
+        body.dark-mode {
+            --body-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #f1f1f1;
+            --border-color: #333333;
+            --sidebar-color: #1f2937;
+            --sidebar-hover: rgba(255, 255, 255, 0.10);
+        }
+
+        body.dark-mode .sidebar {
+            background-color: var(--sidebar-color);
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .sidebar a {
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .sidebar .menu-title {
+            color: #d1d5db;
+        }
+
+        body.dark-mode .sidebar a:hover,
+        body.dark-mode .sidebar a.active {
+            background-color: var(--sidebar-hover);
+        }
+
+        body.dark-mode .topbar {
+            background-color: #1e1e1e;
+        }
+
+        body.dark-mode .table {
+            --bs-table-bg: #1e1e1e;
+            --bs-table-color: #f1f1f1;
+            --bs-table-border-color: #333333;
+        }
+
+        body.dark-mode .table-light {
+            --bs-table-bg: #292929;
+            --bs-table-color: #fff;
+        }
+
+        body.dark-mode .btn-light {
+            background-color: #333;
+            color: white;
+            border-color: #444;
+        }
+
+        body.dark-mode .form-control,
+        body.dark-mode .form-select {
+            background-color: #252525;
+            color: #fff;
+            border-color: #444;
+        }
+
+        body.dark-mode .form-control::placeholder {
+            color: #aaa;
+        }
+
+        body.dark-mode .text-muted {
+            color: #aaa !important;
+        }
+
+        /* ========================= MOBILE ========================= */
+        .sidebar-overlay {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                margin-left: -250px;
+            }
+
+            .sidebar.show {
+                margin-left: 0;
+            }
+
+            .sidebar-overlay.show {
+                display: block;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.35);
+                z-index: 999;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .topbar {
+                padding: 12px 15px;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
         }
 
         /* =========================
@@ -201,157 +301,160 @@
             --border-color: #333333;
         }
 
-        /* Sidebar Dark Mode */
-        body.dark-mode {
-            --sidebar-color: #1f2937;
-            --sidebar-hover: rgba(255, 255, 255, 0.10);
-        }
-
-        body.dark-mode .sidebar {
-            background-color: var(--sidebar-color);
-            color: #f1f1f1;
-        }
-
-        body.dark-mode .sidebar a {
-            color: #f1f1f1;
-        }
-
-        body.dark-mode .sidebar .menu-title {
-            color: #d1d5db;
-        }
-
-        body.dark-mode .sidebar a:hover,
-        body.dark-mode .sidebar a.active {
-            background-color: var(--sidebar-hover);
-        }
-
-        body.dark-mode .topbar {
-            background-color: #1e1e1e;
-        }
-
-        body.dark-mode .welcome p,
-        body.dark-mode .stat-title {
-            color: #aaaaaa;
-        }
-
-        body.dark-mode .table {
-            --bs-table-bg: #1e1e1e;
-            --bs-table-color: #f1f1f1;
-        }
-
-        body.dark-mode .table-light {
-            --bs-table-bg: #292929;
-            --bs-table-color: #fff;
-        }
-
-        body.dark-mode .btn-light {
-            background-color: #333;
-            color: white;
-            border-color: #444;
-        }
-
         /* =========================
-           MOBILE
+           FORM CARD
         ========================= */
-        /* Overlay untuk mobile */
-        .sidebar-overlay {
-            display: none;
+
+        .form-card {
+
+            background-color: var(--card-bg);
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 12px;
+
+            padding: 25px;
+
         }
 
-        @media (max-width: 768px) {
 
-            .sidebar {
-                margin-left: -250px;
-            }
+        .form-card-title {
 
-            .sidebar.show {
-                margin-left: 0;
-            }
+            font-size: 18px;
 
-            .sidebar-overlay.show {
-                display: block;
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.35);
-                z-index: 999;
-            }
+            font-weight: 600;
 
-            .main-content {
-                margin-left: 0;
-            }
+            margin-bottom: 20px;
 
-            .content {
-                padding: 15px;
-            }
+        }
 
-            .topbar {
-                padding: 12px 15px;
-            }
+
+        .form-label {
+
+            font-weight: 500;
+
         }
     </style>
 </head>
 
-<body>
 
-    <!-- =========================
-     SIDEBAR
-========================= -->
-    <div class="sidebar" id="sidebar">
+<!-- =========================
+         SIDEBAR
+    ========================= -->
 
-        <div class="brand">
-            <i class="bi bi-tools"></i>
-            Peminjaman Alat
-        </div>
+<div class="sidebar" id="sidebar">
 
-        <div class="menu-title">
-            Menu Utama
-        </div>
 
-        <a href="#" class="active">
-            <i class="bi bi-speedometer2"></i>
-            Dashboard
-        </a>
+    <div class="brand">
 
-        <a href="#">
-            <i class="bi bi-box-seam"></i>
-            Data Alat
-        </a>
+        <i class="bi bi-tools"></i>
 
-        <a href="#">
-            <i class="bi bi-tags"></i>
-            Kategori
-        </a>
-
-        <a href="#">
-            <i class="bi bi-person"></i>
-            Peminjam
-        </a>
-
-        <a href="#">
-            <i class="bi bi-arrow-left-right"></i>
-            Peminjaman
-        </a>
-
-        <a href="#">
-            <i class="bi bi-arrow-return-left"></i>
-            Pengembalian
-        </a>
-
-        <div class="menu-title">
-            Sistem
-        </div>
-
-        <a href="#">
-            <i class="bi bi-clock-history"></i>
-            Log Aktivitas
-        </a>
-
-        <!-- Logout -->
-        <div class="logout">
-            <a href="logout.php">
-                <i class="bi bi-box-arrow-right"></i>
-                Logout
-            </a>
-        </div>
+        Peminjaman Alat
 
     </div>
+
+
+    <div class="menu-title">
+
+        Menu Utama
+
+    </div>
+
+
+    <a href="dashboard_admin.php">
+
+        <i class="bi bi-speedometer2"></i>
+
+        Dashboard
+
+    </a>
+
+
+    <a href="alat.php">
+
+        <i class="bi bi-box-seam"></i>
+
+        Data Alat
+
+    </a>
+
+
+    <a href="kategori.php">
+
+        <i class="bi bi-tags"></i>
+
+        Kategori
+
+    </a>
+
+
+    <a href="peminjam.php">
+
+        <i class="bi bi-person"></i>
+
+        Peminjam
+
+    </a>
+
+
+    <a href="peminjaman.php">
+
+        <i class="bi bi-arrow-left-right"></i>
+
+        Peminjaman
+
+    </a>
+
+
+    <a href="pengembalian.php">
+
+        <i class="bi bi-arrow-return-left"></i>
+
+        Pengembalian
+
+    </a>
+
+
+    <div class="menu-title">
+
+        Sistem
+
+    </div>
+
+
+    <!-- USER AKTIF -->
+
+    <a href="daftar_user.php" class="active">
+
+        <i class="bi bi-people"></i>
+
+        Daftar User
+
+    </a>
+
+
+    <a href="log_aktivitas.php">
+
+        <i class="bi bi-clock-history"></i>
+
+        Log Aktivitas
+
+    </a>
+
+
+    <!-- LOGOUT -->
+
+    <div class="logout">
+
+        <a href="logout.php">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+
+</div>
